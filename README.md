@@ -5,6 +5,7 @@
 ## Technogies used to build this app
 
 - React
+- React Router (For Routing)
 - TailwindCSS
 - Framer Motion
 - React-wrapper (For Google Maps)
