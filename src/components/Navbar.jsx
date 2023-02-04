@@ -7,7 +7,7 @@ const Navbar = () => {
   const hanleNav = () => setNav(!nav);
 
   return (
-    <nav className="fixed top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl mt-7 px-8 m-auto rounded-full">
+    <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-7 px-8 m-auto rounded-full">
       <div className="flex justify-between items-center py-2">
         <div className="flex justify-between items-center gap-3">
           <img
@@ -21,7 +21,7 @@ const Navbar = () => {
           </span>
         </div>
 
-        <ul className="hidden sm:flex">
+        <ul className="hidden md:flex">
           <li className="p-4">
             <Link to="/members">Members</Link>
           </li>
@@ -34,10 +34,18 @@ const Navbar = () => {
           <li className="p-4">
             <Link to="/gallery">Gallery</Link>
           </li>
+          <li className="p-4">
+            <Link
+              to="/login"
+              className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
+            >
+              Login
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile Button */}
-        <div onClick={hanleNav} className="block sm:hidden z-10 cursor-pointer">
+        <div onClick={hanleNav} className="block md:hidden z-10 cursor-pointer">
           {nav ? (
             <AiOutlineClose size={20} className="text-light-gray" />
           ) : (
@@ -48,8 +56,8 @@ const Navbar = () => {
         <ul
           className={
             nav
-              ? 'sm:hidden absolute inset-0 -top-7 flex justify-center items-center w-full h-screen flex-col bg-black/95 gap-12 text-light-gray'
-              : 'sm:hidden absolute inset-0 -top-7 left-[-100%] flex justify-center items-center w-full h-screen flex-col bg-black/95 gap-12 text-light-gray'
+              ? 'md:hidden absolute inset-0 flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray'
+              : 'md:hidden absolute inset-0 left-[-100%] flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray'
           }
         >
           <li className="text-4xl hover:text-gray-500">

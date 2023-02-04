@@ -1,13 +1,16 @@
 import React from 'react';
+import Hero from '../../components/Hero';
 import Navbar from '../../components/Navbar';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white px-8">
       <Navbar />
-      <h1 className="text-3xl font-bold text-slate-800 text-center mt-8">
-        DIPSAR Alumni Page using React + Tailwind 💜💜
-      </h1>
+      <Hero
+        title="Empowering Connections: Alumni Associations of DPSRU"
+        subtitle="Join a network of successful alumni and stay connected to the university that helped shaping your future."
+        ctaInfo="Join our Almuni Network"
+      />
     </div>
   );
 };
