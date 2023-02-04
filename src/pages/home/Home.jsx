@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
-import NavbarContext from '../../navbarContext';
+import React from 'react';
+import Navbar from '../../components/Navbar';
 
 const Home = () => {
-  const navbar = useContext(NavbarContext);
-
   return (
-    <>
-      {navbar}
-      <h1 className="text-6xl font-bold text-slate-800 text-center mt-8">
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <h1 className="text-3xl font-bold text-slate-800 text-center mt-8">
         DIPSAR Alumni Page using React + Tailwind 💜💜
       </h1>
-    </>
+    </div>
   );
 };
 

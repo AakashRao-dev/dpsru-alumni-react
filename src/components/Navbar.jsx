@@ -4,18 +4,45 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <div>
-      <nav className="bg-slate-900 rounded-xl m-auto max-w-lg text-slate-100">
-        <ul className="flex justify-around p-4">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
+      <nav className="bg-light-gray w-full z-10 transiton ease-in duration-300 shadow-xl mt-7 px-8 max-w-[1240px] m-auto rounded-full">
+        <div className="flex justify-between items-center py-2">
+          {/* LOGO IMAGE WITH TEXT */}
+          <div className="flex justify-between items-center gap-3">
+            <img
+              src={require('../images/logo.png')}
+              alt="logo"
+              className="h-10"
+              title="logo image"
+            />
+            <span className="text-base font-bold uppercase" title="logo text">
+              DPSRU Alumni forum
+            </span>
+          </div>
+
+          {/* NAVIGATION LINKS WITH BUTTON */}
+          <ul className="flex gap-8">
+            <li>
+              <Link to="/">Members</Link>
+            </li>
+            <li>
+              <Link to="/login">Council</Link>
+            </li>
+            <li>
+              <Link to="/about">Events</Link>
+            </li>
+            <li>
+              <Link to="/about">Gallery</Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className="bg-dark-blue hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
+              >
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   );
