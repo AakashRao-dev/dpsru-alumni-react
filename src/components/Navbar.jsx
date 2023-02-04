@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-7 px-8 m-auto rounded-full">
       <div className="flex justify-between items-center py-2">
-        <div className="flex justify-between items-center gap-3">
+        <Link to="/" className="flex justify-between items-center gap-3">
           <img
             src={require('../images/logo.png')}
             alt="logo"
@@ -22,7 +22,7 @@ const Navbar = () => {
           >
             DPSRU Alumni forum
           </span>
-        </div>
+        </Link>
 
         <ul className="hidden md:flex">
           <li className="p-4">

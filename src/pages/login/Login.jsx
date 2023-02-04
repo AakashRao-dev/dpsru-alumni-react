@@ -1,12 +1,14 @@
 import React from 'react';
+import Navbar from '../../components/Navbar';
 
 const Login = () => {
   return (
-    <div>
+    <>
+      <Navbar />
       <h1 className="text-3xl font-semibold text-slate-400 text-center mt-8">
         Login Page 🫡
       </h1>
-    </div>
+    </>
   );
 };
 export default Login;
