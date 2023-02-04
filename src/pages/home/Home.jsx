@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../../components/Hero';
 import Navbar from '../../components/Navbar';
+import MemberHighlight from '../../components/MemberHighlight';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         subtitle="Join a network of successful alumni and stay connected to the university that helped shaping your future."
         ctaInfo="Join our Almuni Network"
       />
+      <MemberHighlight />
     </div>
   );
 };
