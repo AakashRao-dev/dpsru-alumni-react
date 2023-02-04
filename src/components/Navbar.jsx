@@ -16,7 +16,10 @@ const Navbar = () => {
             className="h-10"
             title="logo image"
           />
-          <span className="text-base font-bold uppercase" title="logo text">
+          <span
+            className="text-xs md:text-base font-bold uppercase"
+            title="logo text"
+          >
             DPSRU Alumni forum
           </span>
         </div>
