@@ -1,50 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 const Navbar = () => {
-  return (
-    <div>
-      <nav className="bg-light-gray w-full z-10 transiton ease-in duration-300 shadow-xl mt-7 px-8 max-w-[1240px] m-auto rounded-full">
-        <div className="flex justify-between items-center py-2">
-          {/* LOGO IMAGE WITH TEXT */}
-          <div className="flex justify-between items-center gap-3">
-            <img
-              src={require('../images/logo.png')}
-              alt="logo"
-              className="h-10"
-              title="logo image"
-            />
-            <span className="text-base font-bold uppercase" title="logo text">
-              DPSRU Alumni forum
-            </span>
-          </div>
+  const [nav, setNav] = useState(false);
+  const hanleNav = () => setNav(!nav);
 
-          {/* NAVIGATION LINKS WITH BUTTON */}
-          <ul className="flex gap-8">
-            <li>
-              <Link to="/members">Members</Link>
-            </li>
-            <li>
-              <Link to="/council">Council</Link>
-            </li>
-            <li>
-              <Link to="/events">Events</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Gallery</Link>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                className="bg-dark-blue hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
-              >
-                Login
-              </Link>
-            </li>
-          </ul>
+  return (
+    <nav className="fixed top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl mt-7 px-8 m-auto rounded-full">
+      <div className="flex justify-between items-center py-2">
+        <div className="flex justify-between items-center gap-3">
+          <img
+            src={require('../images/logo.png')}
+            alt="logo"
+            className="h-10"
+            title="logo image"
+          />
+          <span className="text-base font-bold uppercase" title="logo text">
+            DPSRU Alumni forum
+          </span>
         </div>
-      </nav>
-    </div>
+
+        <ul className="hidden sm:flex">
+          <li className="p-4">
+            <Link to="/members">Members</Link>
+          </li>
+          <li className="p-4">
+            <Link to="/council">Council</Link>
+          </li>
+          <li className="p-4">
+            <Link to="/events">Events</Link>
+          </li>
+          <li className="p-4">
+            <Link to="/gallery">Gallery</Link>
+          </li>
+        </ul>
+
+        {/* Mobile Button */}
+        <div onClick={hanleNav} className="block sm:hidden z-10 cursor-pointer">
+          {nav ? (
+            <AiOutlineClose size={20} className="text-light-gray" />
+          ) : (
+            <AiOutlineMenu size={20} />
+          )}
+        </div>
+        {/* Mobile Menu */}
+        <ul
+          className={
+            nav
+              ? 'sm:hidden absolute inset-0 -top-7 flex justify-center items-center w-full h-screen flex-col bg-black/95 gap-12 text-light-gray'
+              : 'sm:hidden absolute inset-0 -top-7 left-[-100%] flex justify-center items-center w-full h-screen flex-col bg-black/95 gap-12 text-light-gray'
+          }
+        >
+          <li className="text-4xl hover:text-gray-500">
+            <Link to="/members">Members</Link>
+          </li>
+          <li className="text-4xl hover:text-gray-500">
+            <Link to="/council">Council</Link>
+          </li>
+          <li className="text-4xl hover:text-gray-500">
+            <Link to="/events">Events</Link>
+          </li>
+          <li className="text-4xl hover:text-gray-500">
+            <Link to="/gallery">Gallery</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 export default Navbar;

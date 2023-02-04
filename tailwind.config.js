@@ -13,6 +13,7 @@ module.exports = {
       'custom-yellow': '#F0C000',
       'sky-blue': '#086BAE',
       'light-gray': '#E9E9E9',
+      black: '#111111',
     },
   },
   plugins: [],
