@@ -22,20 +22,20 @@ const Navbar = () => {
           {/* NAVIGATION LINKS WITH BUTTON */}
           <ul className="flex gap-8">
             <li>
-              <Link to="/">Members</Link>
+              <Link to="/members">Members</Link>
             </li>
             <li>
-              <Link to="/login">Council</Link>
+              <Link to="/council">Council</Link>
             </li>
             <li>
-              <Link to="/about">Events</Link>
+              <Link to="/events">Events</Link>
             </li>
             <li>
-              <Link to="/about">Gallery</Link>
+              <Link to="/gallery">Gallery</Link>
             </li>
             <li>
               <Link
-                to="/about"
+                to="/login"
                 className="bg-dark-blue hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
               >
                 Login
