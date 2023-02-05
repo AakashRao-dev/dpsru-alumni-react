@@ -97,7 +97,7 @@ function MemberHighlight() {
             height: width < 800 ? '800px' : '450px',
           },
         }}
-        className="my-24 bg-light-gray"
+        className="my-36 bg-light-gray"
       >
         {images.map((img, index) => {
           return (

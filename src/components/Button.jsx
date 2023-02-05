@@ -1,8 +1,8 @@
-function Button({ ctaTitle, paddingY }) {
+function Button({ ctaTitle, paddingY, width }) {
   return (
     <>
       <button
-        className={`mt-5 bg-custom-yellow text-black mx-auto md:mx-0 hover:bg-very-custom-yellow px-8 w-full py-${paddingY} rounded-full font-bold shadow-xl shadow-black/20`}
+        className={`mt-5 bg-custom-yellow text-black hover:bg-very-custom-yellow px-8 w-${width} py-${paddingY} rounded-full font-bold shadow-xl shadow-black/20`}
       >
         {ctaTitle}
       </button>

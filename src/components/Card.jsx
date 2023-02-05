@@ -22,7 +22,7 @@ function Card({ title, description, imageURL, textAlign, ctaTitle }) {
       ) : (
         <p className="mt-4 text-lg">{description}</p>
       )}
-      <Button ctaTitle={ctaTitle} paddingY="2" />
+      <Button ctaTitle={ctaTitle} paddingY="2" width="full" />
     </>
   );
 }

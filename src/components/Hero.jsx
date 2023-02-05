@@ -12,8 +12,8 @@ function Hero({ title, subtitle, ctaInfo }) {
           {title}
         </h1>
         <p className="text-base md:text-2xl">{subtitle}</p>
-        <Link to="/login">
-          <Button ctaTitle={ctaInfo} paddingY="3" />
+        <Link to="/login" className="mx-auto md:mx-0">
+          <Button ctaTitle={ctaInfo} paddingY="3" width="none" />
         </Link>
       </div>
 

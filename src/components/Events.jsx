@@ -26,7 +26,7 @@ function Events() {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row gap-12 p-2 md:mt-12 mt-6">
+    <div className="flex flex-col md:flex-row gap-20 p-2 md:mt-12 mt-6">
       {events.map((event, index) => {
         return (
           <div className="bg-dark-blue text-card-text w-full p-6 rounded-2xl">
