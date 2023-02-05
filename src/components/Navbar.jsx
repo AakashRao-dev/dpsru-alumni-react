@@ -9,7 +9,10 @@ const Navbar = () => {
   return (
     <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-8 px-8 m-auto rounded-full">
       <div className="flex justify-between items-center py-2">
-        <Link to="/" className="flex justify-between items-center gap-3">
+        <Link
+          to="/"
+          className="flex justify-between items-center gap-3 z-[999]"
+        >
           <img
             src={require('../images/logo.png')}
             alt="logo"
@@ -48,7 +51,10 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile Button */}
-        <div onClick={hanleNav} className="block md:hidden z-10 cursor-pointer">
+        <div
+          onClick={hanleNav}
+          className="block md:hidden z-[9999] cursor-pointer"
+        >
           {nav ? (
             <AiOutlineClose size={20} className="text-light-gray" />
           ) : (
@@ -59,8 +65,8 @@ const Navbar = () => {
         <ul
           className={
             nav
-              ? 'md:hidden absolute inset-0 flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray'
-              : 'md:hidden absolute inset-0 left-[-100%] flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray'
+              ? 'md:hidden absolute inset-0 flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray z-[999]'
+              : 'md:hidden absolute inset-0 left-[-100%] flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray z-[999]'
           }
         >
           <li className="text-4xl hover:text-gray-500">

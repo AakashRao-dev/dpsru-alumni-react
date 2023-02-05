@@ -94,7 +94,7 @@ function MemberHighlight() {
           },
 
           viewport: {
-            height: width < 800 ? '850px' : '450px',
+            height: width < 800 ? '800px' : '450px',
           },
         }}
         className="my-24 bg-light-gray"
@@ -109,7 +109,7 @@ function MemberHighlight() {
               {/* QUOTES & INFO */}
               <div className="basis-3/6 md:mx-12">
                 <ImQuotesLeft className="h-12 text-3xl" />
-                <p className="text-black text-lg md:text-2xl px-12">
+                <p className="text-black text-md md:text-2xl md:px-12 px-8">
                   {texts[index]}
                 </p>
                 <div className="mt-12 px-12">

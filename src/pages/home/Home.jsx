@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../../components/Hero';
 import Navbar from '../../components/Navbar';
 import MemberHighlight from '../../components/MemberHighlight';
+import EventSummary from '../../components/EventSummary';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         ctaInfo="Join our Almuni Network"
       />
       <MemberHighlight />
+      <EventSummary />
     </div>
   );
 };
