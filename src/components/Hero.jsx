@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Hero({ title, subtitle, ctaInfo }) {
   return (
-    <div className="mt-14 flex flex-col md:flex-row text-center md:text-left items-center w-full max-w-[1220px] mx-auto gap-6 md:gap-0">
+    <div className="mt-12 pb-4 flex flex-col md:flex-row text-center md:text-left items-center w-full max-w-[1220px] mx-auto gap-6 md:gap-0">
       {/* LEFT INFO */}
       <div className="text-black basis-3/5 py-8 flex flex-col gap-5 md:gap-8 items-start">
         <h1 className="text-[30px] md:text-[46px] leading-[50px] md:leading-[60px] font-bold">

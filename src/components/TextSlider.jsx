@@ -15,7 +15,7 @@ function TextSlider() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prevIndex => (prevIndex + 1) % texts.length);
-    }, 6000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, [texts.length]);

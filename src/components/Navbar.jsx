@@ -7,7 +7,7 @@ const Navbar = () => {
   const hanleNav = () => setNav(!nav);
 
   return (
-    <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-7 px-8 m-auto rounded-full">
+    <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-5 px-8 m-auto rounded-full">
       <div className="flex justify-between items-center py-2">
         <Link to="/" className="flex justify-between items-center gap-3">
           <img

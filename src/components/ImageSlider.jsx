@@ -30,8 +30,8 @@ function ImageSlider() {
   return (
     <div className="bg-dark-blue outline p-8 rounded-2xl hidden md:block">
       <SimpleImageSlider
-        width={344}
-        height={403}
+        width={300}
+        height={350}
         images={images}
         showBullets={true}
         loop={true}
