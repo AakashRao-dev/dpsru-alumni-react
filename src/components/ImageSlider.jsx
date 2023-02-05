@@ -33,7 +33,7 @@ function ImageSlider() {
         width={300}
         height={350}
         images={images}
-        showBullets={true}
+        showBullets={false}
         loop={true}
         showNavs={false}
         autoPlay={true}

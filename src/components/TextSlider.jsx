@@ -21,7 +21,7 @@ function TextSlider() {
   }, [texts.length]);
 
   return (
-    <div className="flex text-light-gray w-[300px] mx-auto mt-6 italic">
+    <div className="flex text-light-gray w-[300px] mx-auto mt-6 italic animate-opacity transition-all duration-700 ease-out">
       <p className="break-words text-center">
         <span>"</span>
         {texts[index]}

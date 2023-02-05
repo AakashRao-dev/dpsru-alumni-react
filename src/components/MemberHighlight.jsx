@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { ImQuotesLeft } from 'react-icons/im';
@@ -59,7 +59,15 @@ function MemberHighlight() {
     },
   ];
 
-  const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const autoplay = useRef(Autoplay({ delay: 3000 }));
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
@@ -84,20 +92,27 @@ function MemberHighlight() {
           indicator: {
             backgroundColor: '#0C1732 !important',
           },
+
+          viewport: {
+            height: width < 800 ? '850px' : '450px',
+          },
         }}
-        className="my-12"
+        className="my-24 bg-light-gray"
       >
         {images.map((img, index) => {
           return (
             <Carousel.Slide
-              size="120%"
+              size="100%"
               key={index}
-              className="flex items-center bg-light-gray"
+              className="flex flex-col md:flex-row justify-between items-center h-full bg-light-gray"
             >
-              <div className="basis-3/6 px-12">
+              {/* QUOTES & INFO */}
+              <div className="basis-3/6 md:mx-12">
                 <ImQuotesLeft className="h-12 text-3xl" />
-                <p className="text-black text-2xl">{texts[index]}</p>
-                <div className="mt-12">
+                <p className="text-black text-lg md:text-2xl px-12">
+                  {texts[index]}
+                </p>
+                <div className="mt-12 px-12">
                   <h4 className="text-2xl font-bold">
                     {studentsInfo[index].name}
                   </h4>
@@ -109,11 +124,13 @@ function MemberHighlight() {
                   </div>
                 </div>
               </div>
-              <div className="bg-dark-blue basis-2/6 h-full pt-20 pl-1 object-fill flex justify-center items-center">
+
+              {/* IMAGE CONTAINER */}
+              <div className="bg-dark-blue w-full md:basis-2/6 h-full md:pt-20 md:pl-1 object-fill flex justify-center items-center -order-10 md:order-1">
                 <img
                   src={img.url}
                   alt="carousel images"
-                  className="rounded-xl h-[620px]"
+                  className="rounded md:rounded-xl h-96 md:h-[620px] md:pt-20"
                 />
               </div>
             </Carousel.Slide>
