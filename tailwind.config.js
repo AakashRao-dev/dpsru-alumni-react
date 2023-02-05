@@ -13,6 +13,7 @@ module.exports = {
       'custom-yellow': '#F0C000',
       'very-custom-yellow': '#CCA300',
       'sky-blue': '#086BAE',
+      'dark-sky-blue': '#064E7F',
       'light-gray': '#E9E9E9',
       'card-text': '#E0E0E0',
       black: '#111111',
