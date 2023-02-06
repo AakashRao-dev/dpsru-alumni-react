@@ -25,7 +25,11 @@ function Hero({ title, subtitle, ctaInfo, imgURL, imgSlider }) {
         <div className="basis-2/5 flex justify-end">{imgSlider}</div>
       ) : (
         <div className="basis-2/5 md:h-80 h-10 md:max-w-lg max-w-xs overflow-hidden md:flex hidden justify-end rounded-xl">
-          <img src={imgURL} alt="hero" className="object-cover w-full" />
+          {!imgURL ? (
+            'Sorry, Looks like there is some problem loading the image'
+          ) : (
+            <img src={imgURL} alt="hero" className="object-cover w-full" />
+          )}
         </div>
       )}
     </div>
