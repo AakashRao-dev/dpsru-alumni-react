@@ -6,7 +6,8 @@ function Card({
   imageURL,
   textAlign,
   ctaTitle,
-  graduated,
+  mainTitle,
+  subTitle,
 }) {
   return (
     <>
@@ -17,6 +18,9 @@ function Card({
           <img src={imageURL} alt={title} className="object-cover w-full" />
         </div>
       )}
+      {!mainTitle ? null : (
+        <h2 className="mt-4 text-xl uppercase font-medium">{mainTitle}</h2>
+      )}
       {!title ? (
         'Title Not Found'
       ) : (
@@ -24,9 +28,7 @@ function Card({
           className={`text-${textAlign} text-sm mt-4 uppercase tracking-widest flex justify-between`}
         >
           <span>{title}</span>
-          {graduated ? (
-            <span className="font-semibold">{graduated}</span>
-          ) : null}
+          {subTitle ? <span className="font-semibold">{subTitle}</span> : null}
         </h4>
       )}
       {!description ? (

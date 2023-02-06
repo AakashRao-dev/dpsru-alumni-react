@@ -52,7 +52,7 @@ function AlumniMembers() {
               imageURL={member.url}
               title={member.name}
               description={member.degree}
-              graduated={member.graduated}
+              subtitle={member.graduated}
               ctaTitle="Connect"
               textAlign="left"
             />

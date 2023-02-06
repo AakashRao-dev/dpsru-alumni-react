@@ -5,7 +5,7 @@ import MemberHighlight from '../../components/MemberHighlight';
 import InfoBlock from '../../components/InfoBlock';
 import Footer from '../../components/Footer';
 import ImageSlider from '../../components/ImageSlider';
-import Events from '../../components/Events';
+import EventsComponent from '../../components/Events';
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
         imgSlider={<ImageSlider />}
       />
       <MemberHighlight />
-      <InfoBlock title="Events & Announcements" block={<Events />} />
+      <InfoBlock title="Events & Announcements" block={<EventsComponent />} />
       <Footer />
     </div>
   );

@@ -1,6 +1,6 @@
 import Card from './Card';
 
-function Events() {
+function EventsComponent() {
   const events = [
     {
       title: 'Live stage event',
@@ -46,4 +46,4 @@ function Events() {
     </div>
   );
 }
-export default Events;
+export default EventsComponent;
