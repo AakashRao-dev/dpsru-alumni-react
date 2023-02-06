@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <h1>404, Sorry it seems like you're lost!</h1>
+    <div className="relative w-full min-h-screen">
+      <h1>Nothing to see here</h1>
       <p>
-        But don't worry we're here to help, click the link below to navigate
-        back to <span className="text-custom-yellow font-bold">Home</span>
+        Page you are trying to open does not exist. You may have mistyped the
+        address, or the page has been moved to another URL. If you think this is
+        an error contact support.
       </p>
-      <button className="mt-5 bg-custom-yellow mx-auto md:mx-0 hover:bg-very-custom-yellow px-8 py-3 rounded-full font-bold shadow-xl shadow-black/20">
-        <Link to="/">Take me back</Link>
-      </button>
+      <Link to="/">
+        <Button ctaTitle="Take me back to Home Page" />
+      </Link>
     </div>
   );
 };
