@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const hanleNav = () => setNav(!nav);
+
+  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
+
+  console.log(user);
 
   return (
     <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-8 px-8 m-auto rounded-full">
@@ -40,13 +45,24 @@ const Navbar = () => {
           <li className="p-4">
             <Link to="/gallery">Gallery</Link>
           </li>
-          <li className="p-4">
-            <Link
-              to="/login"
-              className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
-            >
-              Login
-            </Link>
+          <li className="p-3">
+            {isAuthenticated ? (
+              <button
+                className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-medium text-sm"
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              >
+                Log Out
+              </button>
+            ) : (
+              <button
+                className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-medium text-sm"
+                onClick={() => loginWithRedirect()}
+              >
+                Log In
+              </button>
+            )}
           </li>
         </ul>
 
@@ -69,17 +85,25 @@ const Navbar = () => {
               : 'md:hidden absolute inset-0 left-[-100%] flex justify-center items-center w-full h-screen flex-col bg-black gap-12 text-light-gray z-[999]'
           }
         >
-          <li className="text-4xl hover:text-gray-500">
+          <li className="text-4xl">
             <Link to="/members">Members</Link>
           </li>
-          <li className="text-4xl hover:text-gray-500">
+          <li className="text-4xl">
             <Link to="/council">Council</Link>
           </li>
-          <li className="text-4xl hover:text-gray-500">
+          <li className="text-4xl">
             <Link to="/events">Events</Link>
           </li>
-          <li className="text-4xl hover:text-gray-500">
+          <li className="text-4xl">
             <Link to="/gallery">Gallery</Link>
+          </li>
+          <li className="text-2xl font-bold">
+            <button
+              className="bg-light-gray px-16 py-4 text-black rounded-full"
+              onClick={() => loginWithRedirect()}
+            >
+              Login
+            </button>
           </li>
         </ul>
       </div>
