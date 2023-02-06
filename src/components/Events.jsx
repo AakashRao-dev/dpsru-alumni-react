@@ -26,11 +26,11 @@ function Events() {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row gap-20 p-2 md:mt-12 mt-6">
+    <div className="flex flex-col md:flex-row gap-10 p-2 md:mt-12 mt-6 flex-wrap items-center md:justify-between justify-center">
       {events.map((event, index) => {
         return (
           <div
-            className="bg-dark-blue text-card-text w-full p-6 rounded-2xl"
+            className="bg-dark-blue text-card-text w-full p-6 rounded-2xl max-w-xs"
             key={index}
           >
             <Card

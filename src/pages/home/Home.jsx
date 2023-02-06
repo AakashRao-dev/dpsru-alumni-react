@@ -2,8 +2,10 @@ import React from 'react';
 import Hero from '../../components/Hero';
 import Navbar from '../../components/Navbar';
 import MemberHighlight from '../../components/MemberHighlight';
-import EventSummary from '../../components/EventSummary';
+import InfoBlock from '../../components/InfoBlock';
 import Footer from '../../components/Footer';
+import ImageSlider from '../../components/ImageSlider';
+import Events from '../../components/Events';
 
 const Home = () => {
   return (
@@ -13,9 +15,10 @@ const Home = () => {
         title="Empowering Connections: Alumni Associations of DPSRU"
         subtitle="Join a network of successful alumni and stay connected to the university that helped shaping your future."
         ctaInfo="Join our Almuni Network"
+        imgSlider={<ImageSlider />}
       />
       <MemberHighlight />
-      <EventSummary />
+      <InfoBlock title="Events & Announcements" block={<Events />} />
       <Footer />
     </div>
   );
