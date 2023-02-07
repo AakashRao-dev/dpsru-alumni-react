@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const hanleNav = () => setNav(!nav);
+
+  const [options, setOptions] = useState(false);
+  console.log(options);
+
+  const { currentUser } = useAuth();
 
   return (
     <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-8 px-8 m-auto rounded-full">
@@ -27,27 +34,58 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <ul className="hidden md:flex">
-          <li className="p-4">
+        <ul className="hidden md:flex justify-evenly items-center gap-8 relative">
+          <li>
             <Link to="/members">Members</Link>
           </li>
-          <li className="p-4">
+          <li>
             <Link to="/council">Council</Link>
           </li>
-          <li className="p-4">
+          <li>
             <Link to="/events">Events</Link>
           </li>
-          <li className="p-4">
+          <li>
             <Link to="/gallery">Gallery</Link>
           </li>
-          <li className="p-4">
-            <Link
-              to="/signup"
-              className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
-            >
-              Login
-            </Link>
+          <li>
+            {!currentUser ? (
+              <Link
+                to="/signup"
+                className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
+              >
+                Login
+              </Link>
+            ) : (
+              <button
+                className="w-8 h-8 rounded-full bg-dark-blue flex justify-center items-center"
+                onMouseEnter={() => setOptions(!options)}
+                onClick={() => setOptions(!options)}
+              >
+                <AccountCircleIcon className="w-full h-full text-light-gray/95" />
+              </button>
+            )}
           </li>
+
+          <div
+            className={`${
+              options ? 'flex' : 'hidden'
+            } absolute bg-light-dark-blue rounded-md top-[90%] right-0 z-[999999] flex-col text-center text-lg text-light-gray font-semibold`}
+          >
+            <Link to="/edit-profile">
+              <p className="px-4 py-1 hover:bg-light-gray hover:text-black">
+                Edit Profile
+              </p>
+            </Link>
+
+            <Link to="/registeration">
+              <p className="px-4 py-1 hover:bg-light-gray hover:text-black">
+                Registeration
+              </p>
+            </Link>
+            <button className="bg-error-light text-error px-4 py-1 hover:bg-error hover:text-light-gray rounded-b-md">
+              Sign Out
+            </button>
+          </div>
         </ul>
 
         {/* Mobile Button */}
