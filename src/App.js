@@ -6,9 +6,10 @@ import Members from './pages/members/Members';
 import Council from './pages/council/Council';
 import Events from './pages/events/Events';
 import Gallery from './pages/gallery/Gallery';
-import Login from './pages/login/Login';
+import LoginPage from './pages/login/LoginPage';
 import Developed from './pages/developed/Developed';
 import NotFoundPage from './pages/notfoundpage/NotFoundPage';
+import SignUpPage from './pages/signup/SignUpPage';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route exact path="/council" element={<Council />} />
         <Route exact path="/events" element={<Events />} />
         <Route exact path="/gallery" element={<Gallery />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/signup" element={<SignUpPage />} />
         <Route exact path="/developed" element={<Developed />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

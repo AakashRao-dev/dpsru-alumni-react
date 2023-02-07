@@ -42,7 +42,7 @@ const Navbar = () => {
           </li>
           <li className="p-4">
             <Link
-              to="/login"
+              to="/signup"
               className="bg-dark-blue shadow-lg shadow-sky-blue/20 hover:bg-very-dark-blue px-6 py-2 rounded-full text-light-gray font-semibold"
             >
               Login
