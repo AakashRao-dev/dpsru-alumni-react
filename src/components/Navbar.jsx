@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useAuth } from '../contexts/AuthContext';
@@ -9,9 +9,21 @@ const Navbar = () => {
   const hanleNav = () => setNav(!nav);
 
   const [options, setOptions] = useState(false);
-  console.log(options);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+
+  async function handleLogOut() {
+    setError('');
+
+    try {
+      await logout();
+      navigate('/login');
+    } catch {
+      setError('Failed to log out');
+    }
+  }
 
   return (
     <nav className="top-0 w-full z-10 transition ease-in duration-300 bg-light-gray shadow-xl max-w-[1240px] mt-8 px-8 m-auto rounded-full">
@@ -71,20 +83,29 @@ const Navbar = () => {
               options ? 'flex' : 'hidden'
             } absolute bg-light-dark-blue rounded-md top-[90%] right-0 z-[999999] flex-col text-center text-lg text-light-gray font-semibold`}
           >
-            <Link to="/edit-profile">
-              <p className="px-4 py-1 hover:bg-light-gray hover:text-black">
-                Edit Profile
-              </p>
-            </Link>
+            {!error ? (
+              <div>
+                <Link to="/edit-profile">
+                  <p className="px-4 py-1 hover:bg-light-gray hover:text-black">
+                    Edit Profile
+                  </p>
+                </Link>
 
-            <Link to="/registeration">
-              <p className="px-4 py-1 hover:bg-light-gray hover:text-black">
-                Registeration
-              </p>
-            </Link>
-            <button className="bg-error-light text-error px-4 py-1 hover:bg-error hover:text-light-gray rounded-b-md">
-              Sign Out
-            </button>
+                <Link to="/registeration">
+                  <p className="px-4 py-1 hover:bg-light-gray hover:text-black">
+                    Registeration
+                  </p>
+                </Link>
+                <button
+                  onClick={handleLogOut}
+                  className="bg-error-light text-error px-4 py-1 w-full hover:bg-error hover:text-light-gray rounded-b-md"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              error
+            )}
           </div>
         </ul>
 

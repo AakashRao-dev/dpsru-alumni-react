@@ -4,7 +4,7 @@ import Button from './Button';
 
 function Hero({ title, subtitle, ctaInfo, imgURL, imgSlider }) {
   return (
-    <div className="mt-20 pb-4 flex flex-col md:flex-row text-center md:text-left items-center w-full max-w-[1220px] mx-auto gap-6 md:gap-12">
+    <div className="mt-20 pb-4 flex flex-col md:flex-row text-center md:text-left items-center w-full max-w-[1220px] mx-auto gap-6 md:gap-12 lg:px-0 px-8">
       {/* LEFT INFO */}
       <div className="text-black basis-3/5 py-8 flex flex-col gap-5 md:gap-8 md:items-start items-center">
         <h1 className="text-[30px] md:text-[46px] leading-[50px] md:leading-[60px] font-bold">

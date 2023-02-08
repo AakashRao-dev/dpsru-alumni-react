@@ -10,7 +10,7 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login, currentUser } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -27,8 +27,6 @@ function Login() {
       setError('Failed to sign in');
     }
   }
-
-  console.log(currentUser);
 
   return (
     <div className="bg-light-gray max-w-md w-full md:px-10 px-4 md:py-12 py-6 rounded-xl">

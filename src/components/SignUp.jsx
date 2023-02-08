@@ -11,7 +11,7 @@ function SignUp() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -33,8 +33,6 @@ function SignUp() {
       setError('Failed to create an account');
     }
   }
-
-  console.log(currentUser);
 
   return (
     <div className="bg-light-gray max-w-md w-full md:px-10 px-4 md:py-12 py-6 rounded-xl">
