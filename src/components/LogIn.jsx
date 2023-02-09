@@ -29,8 +29,8 @@ function Login() {
   }
 
   return (
-    <div className="bg-light-gray max-w-md w-full md:px-10 px-4 md:py-12 py-6 rounded-xl">
-      <h1 className="text-black text-lg uppercase tracking-widest font-semibold text-center">
+    <div className="bg-[#1224509f] max-w-md w-full md:px-10 px-4 md:py-12 py-6 rounded-xl">
+      <h1 className="text-light-gray text-lg uppercase tracking-widest font-semibold text-center">
         User Login
       </h1>
       {error && (
@@ -81,9 +81,9 @@ function Login() {
       <hr className="mt-8 text-black/30" />
 
       <div className="mt-4 text-center">
-        <h4>
+        <h4 className="text-light-gray">
           Already have an account?{' '}
-          <Link to="/signup" className="text-sky-blue font-semibold">
+          <Link to="/signup" className="text-custom-yellow font-semibold">
             Sign Up Instead
           </Link>
         </h4>
