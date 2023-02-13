@@ -1,4 +1,10 @@
+import { useForm } from 'react-hook-form';
+
 function FormRegisteration() {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = data => console.log(data);
+
   return (
     <>
       <div className="text-center text-light-gray md:mt-12 mt-20">
@@ -9,7 +15,7 @@ function FormRegisteration() {
       </div>
 
       <form
-        action=""
+        onSubmit={handleSubmit(onSubmit)}
         className="mt-16 max-w-2xl bg-[#1224509f] w-full rounded-xl p-12 flex flex-col gap-10"
       >
         <div className="flex flex-col gap-2">
@@ -18,6 +24,7 @@ function FormRegisteration() {
           </label>
           <input
             type="text"
+            {...register('fullname', { required: true })}
             className="w-full bg-none py-3 text-sm pl-2 outline-none placeholder:text-black/60 placeholder:font-medium bg-light-gray rounded"
             placeholder="Full Name: E.g (Salman Khan)"
           />
@@ -29,6 +36,7 @@ function FormRegisteration() {
           </label>
           <input
             type="text"
+            {...register('designation', { required: true })}
             className="w-full bg-none py-3 text-sm pl-2 outline-none placeholder:text-black/60 placeholder:font-medium bg-light-gray rounded"
             placeholder="Job Designation: E.g (Software Engineer)"
           />
@@ -40,6 +48,7 @@ function FormRegisteration() {
           </label>
           <input
             type="text"
+            {...register('address', { required: true })}
             className="w-full bg-none py-3 text-sm pl-2 outline-none placeholder:text-black/60 placeholder:font-medium bg-light-gray rounded"
             placeholder="Home Address: E.g (Plot no 44/45 Sagar colony)"
           />
@@ -50,7 +59,8 @@ function FormRegisteration() {
             Enter your Phone No.
           </label>
           <input
-            type=""
+            type="number"
+            {...register('phone', { required: true })}
             className="w-full bg-none py-3 text-sm pl-2 outline-none placeholder:text-black/60 placeholder:font-medium bg-light-gray rounded"
             placeholder="Phone No.: E.g (9840329760)"
           />
@@ -62,6 +72,7 @@ function FormRegisteration() {
           </label>
           <input
             type="text"
+            {...register('course', { required: true })}
             className="w-full bg-none py-3 text-sm pl-2 outline-none placeholder:text-black/60 placeholder:font-medium bg-light-gray rounded"
             placeholder="Course Name: E.g (M.Pharm Cosmaceutics)"
           />
@@ -73,6 +84,7 @@ function FormRegisteration() {
           </label>
           <input
             type="text"
+            {...register('batch', { required: true })}
             className="w-full bg-none py-3 text-sm pl-2 outline-none placeholder:text-black/60 placeholder:font-medium bg-light-gray rounded"
             placeholder="Batch: E.g (2019-2021)"
           />
