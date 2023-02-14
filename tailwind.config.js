@@ -22,6 +22,8 @@ module.exports = {
       black: '#111111',
       upload: '#86198f',
       'upload-light': '#c026d3',
+      success: '#059669',
+      'success-light': '#6ee7b7',
     },
   },
   plugins: [],

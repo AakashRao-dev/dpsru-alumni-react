@@ -9,6 +9,8 @@ import { IoMdCloudUpload } from 'react-icons/io';
 function FormRegisteration() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const [images, setImages] = useState([]);
   const maxNumber = 69;
@@ -24,7 +26,7 @@ function FormRegisteration() {
     const db = getDatabase();
     const newPostKey = push(child(ref(database), 'posts')).key;
     const { address, batch, course, designation, fullname, phone } = data;
-    set(ref(db, `/${newPostKey}`), {
+    set(ref(db, 'users/' + newPostKey), {
       address,
       batch,
       course,
@@ -34,10 +36,17 @@ function FormRegisteration() {
     })
       .then(() => {
         // log data to console and Redirect to another component after form submission
-        navigate('/home');
+        setError('');
+        setSubmitting(true);
+        setTimeout(() => {
+          navigate('/edit-profile');
+        }, '5000');
       })
-      .catch(error => {
-        console.error(error);
+      .catch(() => {
+        setError('Failed to submit the form');
+        throw new Error(
+          `Sorry!! It looks like there is some problem with submitting the form`
+        );
       });
   };
 
@@ -48,6 +57,17 @@ function FormRegisteration() {
           Registeration
         </h1>
         <p className="mt-4">Please fill in the details below</p>
+        {error && (
+          <div className="text-error md:text-xl text-sm w-full px-4 py-2 mt-6 transition ease-in-out delay-150 text-center rounded-lg bg-error-light">
+            {error}
+          </div>
+        )}
+
+        {submitting && (
+          <div className="text-success md:text-xl text-sm w-full px-4 py-2 text-center mt-6 transition ease-in-out delay-150 rounded-lg bg-success-light">
+            Form Successfully Submitted
+          </div>
+        )}
       </div>
 
       <form
@@ -182,9 +202,21 @@ function FormRegisteration() {
         <button
           type="submit"
           className="bg-custom-yellow text-black hover:bg-very-custom-yellow px-8 w-full py-3 rounded-full font-bold shadow-xl shadow-black/20 text-lg mt-6"
+          disabled={submitting}
         >
           Submit
         </button>
+        {error && (
+          <div className="text-error md:text-xl text-sm w-full px-4 py-2 text-center transition ease-in-out delay-150 rounded-lg bg-error-light">
+            {error}
+          </div>
+        )}
+
+        {submitting && (
+          <div className="text-success md:text-xl text-sm w-full px-4 py-2 text-center transition ease-in-out delay-150 rounded-lg bg-success-light">
+            Form Successfully Submitted
+          </div>
+        )}
       </form>
     </>
   );
