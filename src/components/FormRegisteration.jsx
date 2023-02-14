@@ -1,9 +1,17 @@
 import { useForm } from 'react-hook-form';
+import { database } from '../firebase';
+import { ref, push, child, update } from 'firebase/database';
 
 function FormRegisteration() {
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    const newPostKey = push(child(ref(database), 'posts')).key;
+    const updates = {};
+    updates['/' + newPostKey] = data;
+    console.log(data);
+    return update(ref(database), updates);
+  };
 
   return (
     <>
