@@ -11,10 +11,10 @@ function FormRegisteration() {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-
   const [images, setImages] = useState([]);
   const maxNumber = 69;
 
+  // For Image Upload Input
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
