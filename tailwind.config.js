@@ -20,6 +20,8 @@ module.exports = {
       error: '#dc2626',
       'error-light': '#fca5a5',
       black: '#111111',
+      upload: '#86198f',
+      'upload-light': '#c026d3',
     },
   },
   plugins: [],

@@ -1,16 +1,44 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { database } from '../firebase';
-import { ref, push, child, update } from 'firebase/database';
+import { getDatabase, ref, push, child, set } from 'firebase/database';
+import { useNavigate } from 'react-router-dom';
+import ImageUploading from 'react-images-uploading';
+import { IoMdCloudUpload } from 'react-icons/io';
 
 function FormRegisteration() {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
+  const [images, setImages] = useState([]);
+  const maxNumber = 69;
+
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
+
+  // Write data to database
   const onSubmit = data => {
+    const db = getDatabase();
     const newPostKey = push(child(ref(database), 'posts')).key;
-    const updates = {};
-    updates['/' + newPostKey] = data;
-    console.log(data);
-    return update(ref(database), updates);
+    const { address, batch, course, designation, fullname, phone } = data;
+    set(ref(db, `/${newPostKey}`), {
+      address,
+      batch,
+      course,
+      designation,
+      fullname,
+      phone,
+    })
+      .then(() => {
+        // log data to console and Redirect to another component after form submission
+        navigate('/home');
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   return (
@@ -98,9 +126,62 @@ function FormRegisteration() {
           />
         </div>
 
+        <div className="flex flex-col gap-2">
+          <label className="text-md font-base text-light-gray">
+            Upload your image
+          </label>
+          <ImageUploading
+            multiple={false}
+            value={images}
+            onChange={onChange}
+            maxNumber={maxNumber}
+            dataURLKey="data_url"
+          >
+            {({
+              imageList,
+              onImageUpload,
+              onImageUpdate,
+              onImageRemove,
+              isDragging,
+              dragProps,
+            }) => (
+              // write your building UI
+              <div className="upload__image-wrapper">
+                <button
+                  style={isDragging ? { color: 'red' } : undefined}
+                  onClick={onImageUpload}
+                  {...dragProps}
+                  className="bg-upload text-light-gray hover:bg-upload-light px-8 w-full py-3 rounded font-medium shadow-xl shadow-black/20 text-md max-w-[16rem] flex justify-evenly items-center"
+                >
+                  <IoMdCloudUpload className="text-2xl" /> Click or Drop here
+                </button>
+                {imageList.map((image, index) => (
+                  <div key={index} className="image-item mt-7">
+                    <img src={image['data_url']} alt="" width="200" />
+                    <div className="image-item__btn-wrapper max-w-[200px] mt-2 flex items-center justify-between">
+                      <button
+                        onClick={() => onImageUpdate(index)}
+                        className="bg-error px-3 py-2 rounded text-light-gray"
+                      >
+                        Update
+                      </button>
+                      <button
+                        onClick={() => onImageRemove(index)}
+                        className="bg-error px-3 py-2 rounded text-light-gray"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </ImageUploading>
+        </div>
+
         <button
           type="submit"
-          className="bg-custom-yellow text-black hover:bg-very-custom-yellow px-8 w-full py-3 rounded-full font-bold shadow-xl shadow-black/20 text-lg"
+          className="bg-custom-yellow text-black hover:bg-very-custom-yellow px-8 w-full py-3 rounded-full font-bold shadow-xl shadow-black/20 text-lg mt-6"
         >
           Submit
         </button>
