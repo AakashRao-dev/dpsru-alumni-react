@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { database } from '../firebase';
-import { getDatabase, ref, push, child, set } from 'firebase/database';
+import { getDatabase, ref, set } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import ImageUploading from 'react-images-uploading';
 import { IoMdCloudUpload } from 'react-icons/io';
+import { useAuth } from '../contexts/AuthContext';
 
 function FormRegisteration() {
+  const { uid } = useAuth();
+
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
@@ -24,9 +26,10 @@ function FormRegisteration() {
   // Write data to database
   const onSubmit = data => {
     const db = getDatabase();
-    const newPostKey = push(child(ref(database), 'posts')).key;
+    // const newPostKey = push(child(ref(database), 'posts')).key;
     const { address, batch, course, designation, fullname, phone } = data;
-    set(ref(db, 'users/' + newPostKey), {
+
+    set(ref(db, 'users/' + uid), {
       address,
       batch,
       course,
