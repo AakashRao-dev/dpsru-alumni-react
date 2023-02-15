@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getDatabase, ref, set } from 'firebase/database';
+import { uploadBytes, ref as sRef } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { storage } from '../firebase';
 
 function FormRegisteration() {
   const { uid } = useAuth();
@@ -11,6 +13,7 @@ function FormRegisteration() {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [image, setImage] = useState(null);
 
   // Write data to database
   const onSubmit = data => {
@@ -40,6 +43,17 @@ function FormRegisteration() {
           `Sorry!! It looks like there is some problem with submitting the form`
         );
       });
+
+    uploadImage();
+  };
+  console.log(image);
+
+  const uploadImage = () => {
+    if (image == null) return;
+    const imageRef = sRef(storage, `images/${uid}`);
+    uploadBytes(imageRef, image).then(() => {
+      console.log('Image uploaded');
+    });
   };
 
   return (
@@ -146,6 +160,9 @@ function FormRegisteration() {
             type="file"
             {...register('image', { required: true })}
             className="w-full text-lg text-light-gray border border-light-gray rounded-lg cursor-pointer bg-light-dark-blue focus:outline-none"
+            onChange={e => {
+              setImage(e.target.files[0]);
+            }}
           />
         </div>
 
