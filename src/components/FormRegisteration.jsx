@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { getDatabase, ref, set } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
-import ImageUploading from 'react-images-uploading';
-import { IoMdCloudUpload } from 'react-icons/io';
 import { useAuth } from '../contexts/AuthContext';
 
 function FormRegisteration() {
@@ -13,15 +11,6 @@ function FormRegisteration() {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const [images, setImages] = useState([]);
-  const maxNumber = 69;
-
-  // For Image Upload Input
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
 
   // Write data to database
   const onSubmit = data => {
@@ -150,56 +139,14 @@ function FormRegisteration() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-md font-base text-light-gray">
+          <label className="font-base text-light-gray block mb-2 text-lg font-medium text-gray-900 dark:text-white">
             Upload your image
           </label>
-          <ImageUploading
-            multiple={false}
-            value={images}
-            onChange={onChange}
-            maxNumber={maxNumber}
-            dataURLKey="data_url"
-          >
-            {({
-              imageList,
-              onImageUpload,
-              onImageUpdate,
-              onImageRemove,
-              isDragging,
-              dragProps,
-            }) => (
-              // write your building UI
-              <div className="upload__image-wrapper">
-                <button
-                  style={isDragging ? { color: 'red' } : undefined}
-                  onClick={onImageUpload}
-                  {...dragProps}
-                  className="bg-upload text-light-gray hover:bg-upload-light px-8 w-full py-3 rounded font-medium shadow-xl shadow-black/20 text-md max-w-[16rem] flex justify-evenly items-center"
-                >
-                  <IoMdCloudUpload className="text-2xl" /> Click or Drop here
-                </button>
-                {imageList.map((image, index) => (
-                  <div key={index} className="image-item mt-7">
-                    <img src={image['data_url']} alt="" width="200" />
-                    <div className="image-item__btn-wrapper max-w-[200px] mt-2 flex items-center justify-between">
-                      <button
-                        onClick={() => onImageUpdate(index)}
-                        className="bg-error px-3 py-2 rounded text-light-gray"
-                      >
-                        Update
-                      </button>
-                      <button
-                        onClick={() => onImageRemove(index)}
-                        className="bg-error px-3 py-2 rounded text-light-gray"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </ImageUploading>
+          <input
+            type="file"
+            {...register('image', { required: true })}
+            className="w-full text-lg text-light-gray border border-light-gray rounded-lg cursor-pointer bg-light-dark-blue focus:outline-none"
+          />
         </div>
 
         <button

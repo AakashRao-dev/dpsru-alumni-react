@@ -130,8 +130,6 @@ function MemberHighlight() {
               <div className="bg-dark-blue w-full md:basis-2/6 h-full md:pt-20 md:pl-1 object-fill flex justify-center items-center -order-10 md:order-1">
                 <LazyLoadImage
                   alt={'carousel images'}
-                  width={600}
-                  height={400}
                   src={img.url}
                   className="rounded md:rounded-xl h-96 md:h-[620px] md:pt-20"
                 />
