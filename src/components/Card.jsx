@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Button from './Button';
 
 function Card({
@@ -15,7 +16,14 @@ function Card({
         'URL Not Found'
       ) : (
         <div className="h-64 md:max-w-lg max-w-xs overflow-hidden md:flex justify-end rounded-xl">
-          <img src={imageURL} alt={title} className="object-cover w-full" />
+          {/* <img src={imageURL} alt={title} className="object-cover w-full" /> */}
+          <LazyLoadImage
+            alt={title}
+            width={600}
+            height={400}
+            src={imageURL}
+            className="w-full object-cover"
+          />
         </div>
       )}
       {!mainTitle ? null : (

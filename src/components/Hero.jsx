@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Button from './Button';
 
 function Hero({ title, subtitle, ctaInfo, imgURL, imgSlider }) {
@@ -28,7 +29,13 @@ function Hero({ title, subtitle, ctaInfo, imgURL, imgSlider }) {
           {!imgURL ? (
             'Sorry, Looks like there is some problem loading the image'
           ) : (
-            <img src={imgURL} alt="hero" className="object-cover w-full" />
+            <LazyLoadImage
+              alt={title}
+              width={600}
+              height={400}
+              src={imgURL}
+              className="w-full object-cover"
+            />
           )}
         </div>
       )}

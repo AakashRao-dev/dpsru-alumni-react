@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { ImQuotesLeft } from 'react-icons/im';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function MemberHighlight() {
   const images = [
@@ -127,9 +128,11 @@ function MemberHighlight() {
 
               {/* IMAGE CONTAINER */}
               <div className="bg-dark-blue w-full md:basis-2/6 h-full md:pt-20 md:pl-1 object-fill flex justify-center items-center -order-10 md:order-1">
-                <img
+                <LazyLoadImage
+                  alt={'carousel images'}
+                  width={600}
+                  height={400}
                   src={img.url}
-                  alt="carousel images"
                   className="rounded md:rounded-xl h-96 md:h-[620px] md:pt-20"
                 />
               </div>
