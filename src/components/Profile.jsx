@@ -3,17 +3,22 @@ import { child, get, getDatabase, ref } from 'firebase/database';
 import { Skeleton } from '@mui/material';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import { ref as sRef, listAll, getDownloadURL } from 'firebase/storage';
+import { storage } from '../firebase';
 
 function Profile() {
   const [users, setUsers] = useState('');
+  const [imageDown, setImageDown] = useState('');
   const { uid } = useAuth();
+
+  const imageDownRef = sRef(storage, 'images/');
 
   useEffect(() => {
     const dbRef = ref(getDatabase());
     get(child(dbRef, 'users/' + uid))
       .then(snapshot => {
         if (snapshot.exists()) {
-          console.log(snapshot.val());
+          // console.log(snapshot.val());
           setUsers(snapshot.val());
         } else {
           console.log('No data available');
@@ -22,6 +27,16 @@ function Profile() {
       .catch(error => {
         console.error(error);
       });
+
+    // TO DOWNLOAD THE IMAGE
+    listAll(imageDownRef).then(response => {
+      response.items.forEach(item => {
+        getDownloadURL(item).then(url => {
+          setImageDown(url);
+        });
+      });
+    });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,7 +56,7 @@ function Profile() {
 
       {/* PROFILE CARD */}
       <div className="bg-[#1224509f] max-w-md w-full p-8 rounded-xl">
-        {!users.imgURL ? (
+        {!imageDown ? (
           <Skeleton
             variant="rectangular"
             animation="wave"
@@ -49,7 +64,7 @@ function Profile() {
             height={200}
           />
         ) : (
-          <img src="" alt="" />
+          <img src={imageDown} alt="" />
         )}
 
         <div className="mt-7 text-light-gray flex flex-col gap-2 text-lg">
