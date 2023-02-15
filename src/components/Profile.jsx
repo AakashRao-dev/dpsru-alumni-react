@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { child, get, getDatabase, ref } from 'firebase/database';
 import { Skeleton } from '@mui/material';
 import { useAuth } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 function Profile() {
   const [users, setUsers] = useState('');
@@ -96,13 +97,17 @@ function Profile() {
         </div>
 
         <div className="mt-8 flex justify-between items-center">
-          <button className="bg-success text-light-gray px-4 py-2 font-medium rounded">
-            Confirm
-          </button>
+          <Link to="/payment">
+            <button className="bg-success text-light-gray px-4 py-2 font-medium rounded">
+              Confirm
+            </button>
+          </Link>
 
-          <button className="bg-error text-light-gray px-4 py-2 font-medium rounded">
-            Edit Profile
-          </button>
+          <Link to="/registeration">
+            <button className="bg-error text-light-gray px-4 py-2 font-medium rounded">
+              Edit Profile
+            </button>
+          </Link>
         </div>
       </div>
     </>
